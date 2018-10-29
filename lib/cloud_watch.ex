@@ -111,7 +111,7 @@ defmodule CloudWatch do
           AwsProxy.create_log_stream(state.client, %{logGroupName: state.log_group_name,
             logStreamName: state.log_stream_name})
           flush(state, opts)
-        {:error, %HTTPoison.Error{id: nil, reason: reason}} when reason in [:closed, :connect_timeout, :timeout] ->
+        {:error, _} ->
           state
           |> flush(opts)
     end
